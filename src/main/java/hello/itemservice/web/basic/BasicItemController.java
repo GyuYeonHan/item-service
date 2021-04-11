@@ -74,11 +74,10 @@ public class BasicItemController {
         return "redirect:/basic/items/{itemId}";
     }
 
-    @DeleteMapping("/{itemId}")
-    public String delete(@PathVariable long itemId, Model model) {
-        Item item = itemRepository.findById(itemId);
-        model.addAttribute("item", item);
-        return "basic/item";
+    @GetMapping("/{itemId}/delete")
+    public String delete(@PathVariable long itemId) {
+        itemRepository.delete(itemId);
+        return "redirect:/basic/items";
     }
 
     /**
